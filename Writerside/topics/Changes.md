@@ -3,24 +3,6 @@
 <!-- Maintain a changelog or release notes section
 to inform users about updates, changes, and new features in different API versions -->
 
-## September 1, 2023
+## Match 16, 2024
 
-<table>
-<tr>
-<td>Method</td>
-<td>Changes</td>
-</tr>
-<tr>
-<td><a href="Pet.md"><code>/pet/gift</code></a></td>
-<td>Deprecated and removed from the documentation</td>
-</tr>
-<tr>
-<td><a href="Pet.md"><code>/pet/{petId}</code></a></td>
-<td>
-<list>
-<li>added the <code>status</code> field</li>
-<li>removed the <code>state</code> field</li>
-</list>
-</td>
-</tr>
-</table>
+api文档初始化，编写了[Git规范](Git-specification.md)和[数据库规范](Database-specification.md).

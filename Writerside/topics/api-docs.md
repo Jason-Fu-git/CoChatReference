@@ -2,35 +2,24 @@
 
 <!-- This document provides an introduction into your API. -->
 
-## Introduction
+软工项目`CoChat`的API Reference
 
-Provide a brief introduction to the API, explaining its purpose and scope.
+## Git specification
 
-## What you can do using this API
+单击 [这里](Git-specification.md) 查看本项目的git提交、分支规范.
 
-Provide some simple usage examples to help users get started quickly.
+## Database specification
 
-## Authentication
+单击 [这里](Database-specification.md) 查看本项目数据库所包含的表格、字段及对应`model.py`提供的接口。
 
-Explain the authentication methods and requirements for accessing the API.
 
-## Base URL
+## Api reference
 
-Specify the base URL for making API requests.
+单击 [这里](API-reference.md) 查看本项目的api参考.
 
-If you have more than one environment (production and sandbox) explain the difference and provide links to both.
-
-## Rate Limiting
-
-Explain any rate limiting policies, if applicable.
-
-## Error Handling
-
-Describe the API's error response format and provide common error codes and their meanings.
-
-## Versioning
-
-Explain how the API versioning works and how to specify the desired API version in requests.
+> 由于工程刚刚开始，项目的API Reference还没有制定好，现在文档里的API Reference都是模板
+> 
+{style="warning"}
 
 <seealso>
 
