@@ -1,3 +1,3 @@
 # Delete user
 
-<api-endpoint openapi-path="./../openapi.yaml" endpoint="/user/{username}" method="delete"/>
+<api-endpoint openapi-path="./../cochat.yaml" endpoint="/api/user/{username}" method="delete"/>

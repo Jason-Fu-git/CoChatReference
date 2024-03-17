@@ -3,26 +3,32 @@
 <!--Specify request and response samples manually. 
 You can add the sample inside the <sample> element or include it from a file using the 'src' attribute.-->
 
-<api-endpoint openapi-path="./../openapi.yaml" endpoint="/user" method="post">
+<api-endpoint openapi-path="./../cochat.yaml" endpoint="/api/user/register" method="post">
 
 <request>
 
-<sample src="examples.json" include-lines="1-10"/>
+<sample>
+    {
+        "user_name" : "Plato",
+        "password" : "123456",
+        "email" : "Plato@163.com",
+        "avatar" : "{FILE BINARY}"
+    }
+</sample>
 
 </request>
 
-<response type="default">
+<response type="200">
 
 <sample>
     {
-      "id": 11,
-      "username": "theUser",
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "john@email.com",
-      "password": "12345",
-      "phone": "12345",
-      "userStatus": 1
+        "code" : 0,
+        "info" : "Success",
+        "token" : "***.***.***"
+        "user_name" : "Plato",
+        "password" : "123456",
+        "email" : "Plato@163.com",
+        "avatar" : "{FILE BINARY}"
     }
 </sample>
 

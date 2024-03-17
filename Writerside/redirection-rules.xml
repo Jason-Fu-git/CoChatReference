@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rules SYSTEM "https://resources.jetbrains.com/writerside/1.0/redirection-rules.dtd">
+<rules>
+    <!-- format is as follows
+    <rule id="<unique id>">
+        <accepts>page.html</accepts>
+    </rule>
+    -->
+    <rule id="e2af33d">
+        <description>Created after removal of "Find pet inventories by status" from CoChat API Docs</description>
+        <accepts>Returns-pet-inventories-by-status.html</accepts>
+    </rule>
+    <rule id="2e86a29b">
+        <description>Created after removal of "Place order for pet" from CoChat API Docs</description>
+        <accepts>Place-an-order-for-a-pet.html</accepts>
+    </rule>
+    <rule id="6b8ec3df">
+        <description>Created after removal of "Find purchase order by ID" from CoChat API Docs</description>
+        <accepts>Find-purchase-order-by-ID.html</accepts>
+    </rule>
+    <rule id="73d974b8">
+        <description>Created after removal of "Delete purchase order by ID" from CoChat API Docs</description>
+        <accepts>Delete-purchase-order-by-ID.html</accepts>
+    </rule>
+    <rule id="18e35b91">
+        <description>Created after removal of "Pet" from CoChat API Docs</description>
+        <accepts>Pet.html</accepts>
+    </rule>
+    <rule id="26e3c152">
+        <description>Created after removal of "Create list of users with given input array" from CoChat API Docs
+        </description>
+        <accepts>Creates-list-of-users-with-given-input-array.html</accepts>
+    </rule>
+    <rule id="6a2f2a60">
+        <description>Created after removal of "Log current user out" from CoChat API Docs</description>
+        <accepts>Logs-out-current-logged-in-user-session.html</accepts>
+    </rule>
+    <rule id="128925e7">
+        <description>Created after removal of "Find user" from CoChat API Docs</description>
+        <accepts>Get-user-by-user-name.html</accepts>
+    </rule>
+</rules>

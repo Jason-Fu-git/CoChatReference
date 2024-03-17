@@ -3,37 +3,20 @@
 <!-- Use multiple <sample> elements inside <request> to provide samples for various programming languages. 
 They will be placed in tabs.Developers can use these samples as templates when making requests to this endpoint. -->
 
-<api-endpoint openapi-path="./../openapi.yaml" endpoint="/user/{username}" method="put">
+<api-endpoint openapi-path="./../cochat.yaml" endpoint="/api/user/{username}" method="post">
+<response type="200">
 
-<request>
-
-<sample title="JSON">
-{
-"id": 10,
-"username": "theUser",
-"firstName": "John",
-"lastName": "James",
-"email": "john@email.com",
-"password": "12345",
-"phone": "12345",
-"userStatus": 1
-}
+<sample>
+    {
+        "code" : 0,
+        "info" : "Success",
+        "token" : "***.***.***"
+        "user_name" : "Plato",
+        "password" : "123456",
+        "email" : "Plato@163.com",
+        "avatar" : "{FILE BINARY}"
+    }
 </sample>
 
-<sample lang="javascript" title="JavaScript">
-const userPayload = {
-  id: 10,
-  username: "theUser",
-  firstName: "John",
-  lastName: "James",
-  email: "john@email.com",
-  password: "12345",
-  phone: "12345",
-  userStatus: 1
-};
-console.log(userPayload);
-</sample>
-
-</request>
-
+</response>
 </api-endpoint>

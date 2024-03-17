@@ -1,3 +1,19 @@
 # Log user into the system
 
-<api-endpoint openapi-path="./../openapi.yaml" endpoint="/user/login" method="get"/>
+<api-endpoint openapi-path="./../cochat.yaml" endpoint="/api/user/login" method="post">
+<response type="200">
+
+<sample>
+    {
+        "code" : 0,
+        "info" : "Success",
+        "token" : "***.***.***"
+        "user_name" : "Plato",
+        "password" : "123456",
+        "email" : "Plato@163.com",
+        "avatar" : "{FILE BINARY}"
+    }
+</sample>
+
+</response>
+</api-endpoint>
