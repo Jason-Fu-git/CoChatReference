@@ -11,7 +11,7 @@ You can add the sample inside the <sample> element or include it from a file usi
     {
         "user_name" : "Plato",
         "password" : "123456",
-        "email" : "Plato@163.com",
+        "user_email" : "Plato@163.com",
         "avatar" : "{FILE BINARY}"
     }
 </sample>
@@ -27,7 +27,7 @@ You can add the sample inside the <sample> element or include it from a file usi
         "token" : "***.***.***"
         "user_name" : "Plato",
         "password" : "123456",
-        "email" : "Plato@163.com",
+        "user_email" : "Plato@163.com",
         "avatar" : "{FILE BINARY}"
     }
 </sample>

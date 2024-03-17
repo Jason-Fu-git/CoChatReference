@@ -10,7 +10,7 @@
         "token" : "***.***.***"
         "user_name" : "Plato",
         "password" : "123456",
-        "email" : "Plato@163.com",
+        "user_email" : "Plato@163.com",
         "avatar" : "{FILE BINARY}"
     }
 </sample>

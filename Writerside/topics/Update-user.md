@@ -4,6 +4,20 @@
 They will be placed in tabs.Developers can use these samples as templates when making requests to this endpoint. -->
 
 <api-endpoint openapi-path="./../cochat.yaml" endpoint="/api/user/{username}" method="post">
+
+<request>
+<sample>
+    {
+        "token" : "***.***.***"
+        "user_name" : "Plato",
+        "password" : "123456",
+        "user_email" : "Plato@163.com",
+        "avatar" : "{FILE BINARY}"
+    }
+</sample>
+
+</request>
+
 <response type="200">
 
 <sample>
@@ -13,7 +27,7 @@ They will be placed in tabs.Developers can use these samples as templates when m
         "token" : "***.***.***"
         "user_name" : "Plato",
         "password" : "123456",
-        "email" : "Plato@163.com",
+        "user_email" : "Plato@163.com",
         "avatar" : "{FILE BINARY}"
     }
 </sample>

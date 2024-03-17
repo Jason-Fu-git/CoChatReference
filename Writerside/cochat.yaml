@@ -296,7 +296,7 @@ components:
           format: email
           description: 用户邮箱，长度小于等于100
           example: "Plato@163.com"
-        avatar_url:
+        avatar:
           type: string
           format: binary
           description: 用户头像的二进制文件

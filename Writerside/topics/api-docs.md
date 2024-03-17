@@ -21,6 +21,9 @@
 ## 文档代码托管
 [https://github.com/Jason-Fu-git/CoChatReference/](https://github.com/Jason-Fu-git/CoChatReference/)
 
+如果大家不想翻仓库改的话，可以直接改大作业仓库里的`Api.md`，改完跟我说一声~
+
+
 <seealso>
 
 <!--List any additional resources, such as tutorials or guides, that can help users understand and use the API effectively.-->
