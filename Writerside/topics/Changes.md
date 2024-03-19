@@ -10,3 +10,7 @@ api文档初始化，编写了[Git规范](Git-specification.md)和[数据库规�
 ## March 17, 2024
 
 api reference的 [User部分](Create-user.md) 的创建、登录、更新数据、删除编写完毕
+
+## March 19, 2024
+
+api reference User部分的 Chat，Friend管理完成

@@ -114,7 +114,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
-  /api/user/{username}:
+  /api/user/{userid}:
     delete:
       tags:
         - user
@@ -137,6 +137,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          description: 令牌错误，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 用户id错误, info为 "Invalid user id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
         '405':
           description: 请求方法错误
           content:
@@ -192,6 +204,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JWTResponse'
+        '401':
+          description: 令牌错误，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
         '409':
           description: 该用户已经存在，info为"Username conflict"
           content:
@@ -211,6 +229,342 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
+  /api/user/{userid}/friends:
+    get:
+      tags:
+        - user
+      summary: 用户好友列表获取
+      description: 获取好友列表
+      operationId: getFriends
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+      responses:
+        '200':
+          description: 成功响应，返回好友列表
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                    description: 0
+                    example: 0
+                  info:
+                    type: string
+                    description: Success
+                    example: "Success"
+                  friends:
+                    type: array
+                    description: 好友列表
+                    items:
+                      type: object
+                      properties:
+                        user_id:
+                          type: integer
+                          description: 用户id
+                          example: 1
+                        user_name:
+                          type: string
+                          description: 用户名，长度小于等于50
+                          example: "Plato"
+                        user_email:
+                          type: string
+                          format: email
+                          description: 用户邮箱，长度小于等于100
+                          example: "Plato@163.com"
+                        avatar:
+                          type: string
+                          format: binary
+                          description: 用户头像的二进制文件
+                          example: "{FILE_BINARY}"
+        '401':
+          description: 令牌错误，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 用户id错误，"Invalid user id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+
+    put:
+      tags:
+        - user
+      summary: 发起好友申请
+      description: 发起好友申请
+      operationId: makeFriends
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+                friend_id:
+                  type: integer
+                  description: 申请好友的id
+                  example: 1
+                approve:
+                  type: boolean
+                  description: 是否同意申请
+                  example: true
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          description: 令牌错误，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 用户id错误，info为 "Invalid user id" | "Invalid friend id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+
+  /api/user/{userid}/chats:
+    get:
+      tags:
+        - user
+      summary: 用户群聊列表获取
+      description: 用户群聊列表获取
+      operationId: getChats
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+      responses:
+        '200':
+          description: 成功响应，返回群聊列表
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                    description: 0
+                    example: 0
+                  info:
+                    type: string
+                    description: Success
+                    example: "Success"
+                  chats:
+                    type: array
+                    description: 群聊列表
+                    items:
+                      type: object
+                      properties:
+                        chat_id:
+                          type: integer
+                          description: 群聊id
+                          example: 1
+                        chat_name:
+                          type: string
+                          description: 群聊名称
+                          example: "Athens"
+                        is_private:
+                          type: boolean
+                          description: 是否为私聊
+                          example: true
+        '401':
+          description: 令牌错误，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 用户id错误，info为 "Invalid user id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+
+  /api/chat/{chatid}/management:
+    put:
+      tags:
+        - user
+      summary: 群聊邀请/踢人
+      description: 邀请某用户加入群聊/踢出群聊
+      operationId: inviteChat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+                user_id:
+                  type: integer
+                  description: 自己账户的id
+                  example: 1
+                member_id:
+                  type: integer
+                  description: 对方id
+                  example: 1
+                approve:
+                  type: boolean
+                  description: 是否同意加入
+                  example: true
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          description: 令牌错误或没有群聊管理权限，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 聊天id或用户id错误，info为 "Invalid user id" | "Invalid chat id" | "Invalid member id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+
+  /api/user:
+    get:
+      tags:
+        - user
+      summary: 获取用户列表
+      description: 根据搜索词获取用户列表，若搜索词为空，返回所有用户
+      operationId: getUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                search_text:
+                  type: string
+                  description: 搜索文字，若为空，返回所有用户
+                  example: "Pla"
+      responses:
+        '200':
+          description: 成功响应，返回用户列表
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                    description: 0
+                    example: 0
+                  info:
+                    type: string
+                    description: Success
+                    example: "Success"
+                  users:
+                    type: array
+                    description: 用户列表
+                    items:
+                      type: object
+                      properties:
+                        user_id:
+                          type: integer
+                          description: 用户id
+                          example: 1
+                        user_name:
+                          type: string
+                          description: 用户名，长度小于等于50
+                          example: "Plato"
+                        user_email:
+                          type: string
+                          format: email
+                          description: 用户邮箱，长度小于等于100
+                          example: "Plato@163.com"
+                        avatar:
+                          type: string
+                          format: binary
+                          description: 用户头像的二进制文件
+                          example: "{FILE_BINARY}"
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
 
 
 
@@ -227,41 +581,6 @@ components:
           type: string
           description: 用户密码（前端加密后），加密后长度小于等于50
           example: "123456"
-    FUserFullMsg:
-      properties:
-        user_name:
-          type: string
-          description: 用户名，长度小于等于50
-          example: "Plato"
-        password:
-          type: string
-          description: 用户密码（前端加密后），加密后长度小于等于50
-          example: "123456"
-        user_email:
-          type: string
-          format: email
-          description: 用户邮箱，长度小于等于100
-          example: "Plato@163.com"
-    BUserFullMsg:
-      properties:
-        user_name:
-          type: string
-          description: 用户名，长度小于等于50
-          example: "Plato"
-        password:
-          type: string
-          description: 用户密码（前端加密后），加密后长度小于等于50
-          example: "123456"
-        user_email:
-          type: string
-          format: email
-          description: 用户邮箱，长度小于等于100
-          example: "Plato@163.com"
-        avatar_url:
-          type: string
-          format: url
-          description: 用户头像的url，前端需要使用get方法获取
-          example: "188.228.11.2/avatars/plato.png"
     JWTResponse:
       required:
         - code
@@ -283,6 +602,10 @@ components:
           type: string
           description: 服务端签发的JWT令牌
           example: "***.***.***"
+        user_id:
+          type: integer
+          description: 用户id
+          example: 1
         user_name:
           type: string
           description: 用户名，长度小于等于50
