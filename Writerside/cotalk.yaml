@@ -76,7 +76,7 @@ paths:
                   example: "Plato"
                 password:
                   type: string
-                  description: 用户密码（前端加密后），加密后长度小于等于50
+                  description: 用户密码，长度小于等于50
                   example: "123456"
                 user_email:
                   type: string
@@ -119,7 +119,7 @@ paths:
       tags:
         - user
       summary: 用户注销
-      description: 注销该用户，删除所有关联信息（消息、好友、群聊）
+      description: 注销该用户，删除所有关联信息（消息、好友、聊天）
       operationId: deleteUser
       requestBody:
         content:
@@ -144,7 +144,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '404':
-          description: 用户id错误, info为 "Invalid user id"
+          description: 用户id不存在, info为 "Invalid user id"
           content:
             application/json:
               schema:
@@ -161,12 +161,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
-    post:
+    put:
       tags:
         - user
       summary: 用户更新个人信息
-      description: 更新用户名、密码、头像、邮箱等，注：旧密码需在前端验证
-      operationId: deleteUser
+      description: 更新用户名、密码、头像、邮箱等
+      operationId: updateUser
       requestBody:
         content:
           multipart/form-data:
@@ -181,29 +181,29 @@ paths:
                   example: "***.***.***"
                 user_name:
                   type: string
-                  description: 用户名，长度小于等于50
+                  description: 新的用户名，长度小于等于50
                   example: "Plato"
                 password:
                   type: string
-                  description: 用户新密码（前端加密后），加密后长度小于等于50
+                  description: 用户新密码，长度小于等于50
                   example: "123456"
                 user_email:
                   type: string
                   format: email
-                  description: 用户邮箱，长度小于等于100
+                  description: 用户新邮箱，长度小于等于100
                   example: "Plato@163.com"
                 avatar:
                   type: string
                   format: binary
-                  description: 用户头像
+                  description: 用户新头像
                   example: "{FILE BINARY}"
       responses:
         '200':
-          description: 成功响应，返回新的JWT令牌
+          description: 成功
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JWTResponse'
+                $ref: '#/components/schemas/SuccessResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"
           content:
@@ -291,7 +291,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '404':
-          description: 用户id错误，"Invalid user id"
+          description: 用户id不存在，"Invalid user id"
           content:
             application/json:
               schema:
@@ -346,7 +346,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '404':
-          description: 用户id错误，info为 "Invalid user id" | "Invalid friend id"
+          description: 用户id不存在，info为 "Invalid user id" | "Invalid friend id"
           content:
             application/json:
               schema:
@@ -365,11 +365,73 @@ paths:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
   /api/user/{userid}/chats:
+    delete:
+      tags:
+        - user
+      summary: 退出聊天
+      description: 退出聊天
+      operationId: exitChat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+                chat_id:
+                  type: integer
+                  description: 目标聊天id
+                  example: 1
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          description: 令牌错误，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 用户id或群聊id不存在，info为 "Invalid user id" | "Invalid chat id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '412':
+          description: 尝试退出私聊
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                    description: -6
+                  info:
+                    type: string
+                    info: Cannot exit a private chat
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
     get:
       tags:
         - user
-      summary: 用户群聊列表获取
-      description: 用户群聊列表获取
+      summary: 用户聊天列表获取
+      description: 用户聊天列表获取
       operationId: getChats
       requestBody:
         content:
@@ -382,7 +444,7 @@ paths:
                   example: "***.***.***"
       responses:
         '200':
-          description: 成功响应，返回群聊列表
+          description: 成功响应，返回聊天列表
           content:
             application/json:
               schema:
@@ -397,17 +459,17 @@ paths:
                     example: "Success"
                   chats:
                     type: array
-                    description: 群聊列表
+                    description: 聊天列表
                     items:
                       type: object
                       properties:
                         chat_id:
                           type: integer
-                          description: 群聊id
+                          description: 聊天id
                           example: 1
                         chat_name:
                           type: string
-                          description: 群聊名称
+                          description: 聊天名称
                           example: "Athens"
                         is_private:
                           type: boolean
@@ -420,67 +482,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '404':
-          description: 用户id错误，info为 "Invalid user id"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotFoundResponse'
-        '405':
-          description: 请求方法错误
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadMethodResponse'
-        '500':
-          description: 服务器内部错误
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ServerErrorResponse'
-
-  /api/chat/{chatid}/management:
-    put:
-      tags:
-        - user
-      summary: 群聊邀请/踢人
-      description: 邀请某用户加入群聊/踢出群聊
-      operationId: inviteChat
-      requestBody:
-        content:
-          application/json:
-            schema:
-              properties:
-                token:
-                  type: string
-                  description: JWT令牌
-                  example: "***.***.***"
-                user_id:
-                  type: integer
-                  description: 自己账户的id
-                  example: 1
-                member_id:
-                  type: integer
-                  description: 对方id
-                  example: 1
-                approve:
-                  type: boolean
-                  description: 是否同意加入
-                  example: true
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SuccessResponse'
-        '401':
-          description: 令牌错误或没有群聊管理权限，info为 "Unauthorized"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedResponse'
-        '404':
-          description: 聊天id或用户id错误，info为 "Invalid user id" | "Invalid chat id" | "Invalid member id"
+          description: 用户id不存在，info为 "Invalid user id"
           content:
             application/json:
               schema:
@@ -566,6 +568,730 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
+  /api/chat/{chatid}/members:
+    put:
+      tags:
+        - chat
+      summary: 聊天邀请/踢人
+      description: 邀请某用户加入聊天/踢出聊天
+      operationId: inviteChat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+                user_id:
+                  type: integer
+                  description: 自己账户的id
+                  example: 1
+                member_id:
+                  type: integer
+                  description: 对方id
+                  example: 1
+                approve:
+                  type: boolean
+                  description: 是否同意加入
+                  example: true
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          description: 令牌错误或没有聊天管理权限，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 聊天id或用户id不存在，info为 "Invalid user id" | "Invalid chat id" | "Invalid member id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+    get:
+      tags:
+        - chat
+      summary: 获取聊天成员列表
+      description: 获取聊天成员列表，及其详情信息、权限
+      operationId: chatMembers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+                user_id:
+                  type: integer
+                  description: 自己账户的id
+                  example: 1
+      responses:
+        '200':
+          description: 成功响应
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                    description: 0
+                  info:
+                    type: string
+                    description: Success
+                  members:
+                    type: array
+                    description: 成员列表
+                    items:
+                      type: object
+                      properties:
+                        user_id:
+                          type: integer
+                          description: 用户id
+                          example: 1
+                        user_name:
+                          type: string
+                          description: 用户名，长度小于等于50
+                          example: "Plato"
+                        user_email:
+                          type: string
+                          format: email
+                          description: 用户邮箱，长度小于等于100
+                          example: "Plato@163.com"
+                        avatar:
+                          type: string
+                          format: binary
+                          description: 用户头像的二进制文件
+                          example: "{FILE_BINARY}"
+                        privilege:
+                          type: string
+                          description: 用户权限
+                          enum:
+                            - owner
+                            - admin
+                            - member
+        '401':
+          description: 令牌错误，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 聊天id或用户id不存在，info为 "Invalid user id" | "Invalid chat id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+
+  /api/chat/{chatid}/management:
+    put:
+      tags:
+        - chat
+      summary: 修改成员权限
+      description: 将某个成员的权限修改为“成员(member)”，“管理员(admin)”，“群主(owner)”
+      operationId: manageChat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+                user_id:
+                  type: integer
+                  description: 自己账户的id
+                  example: 1
+                member_id:
+                  type: integer
+                  description: 对方id
+                  example: 1
+                change_to:
+                  type: string
+                  description: 要把对方的权限修改成xxx
+                  enum:
+                    - owner
+                    - admin
+                    - member
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          description: 令牌错误或没有聊天管理权限，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 聊天id或用户id不存在，info为 "Invalid user id" | "Invalid chat id" | "Invalid member id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+
+  /api/chat/{chatid}/messages:
+    get:
+      tags:
+        - chat
+      summary: 获取（晚于某时间）的聊天消息列表
+      description: 获取聊天消息列表，及其已读/未读信息
+      operationId: getChatMessages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - token
+                - user_id
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+                user_id:
+                  type: integer
+                  description: 自己账户的id
+                  example: 1
+                after_time:
+                  type: number
+                  format: time
+                  description: 获取晚于该时间的消息列表，若此字段为空，返回所有消息
+                  example: 1710836514
+      responses:
+        '200':
+          description: 成功响应，返回消息列表
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                    description: 0
+                  info:
+                    type: string
+                    description: Success
+                  messages:
+                    type: array
+                    description: 消息列表
+                    items:
+                      type: object
+                      properties:
+                        msg_id:
+                          type: integer
+                          description: 消息id
+                          example: 1
+                        sender_id:
+                          type: integer
+                          description: 发送者id
+                          example: 1
+                        msg_text:
+                          type: string
+                          description: 消息文字
+                          example: "I published the Republic"
+                        msg_type:
+                          type: string
+                          description: 消息类型
+                          enum:
+                            - text
+                            - image
+                            - audio
+                            - video
+                            - others
+                          example: text
+                        create_time:
+                          type: number
+                          format: time
+                          description: 消息发送的时间
+                          example: 1710836514
+                        read_users:
+                          type: array
+                          description: 已读成员id列表
+                          items:
+                            properties:
+                              user_id:
+                                type: integer
+                                description: 用户id
+                                example: 1
+        '401':
+          description: 令牌错误，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 聊天id或用户id不存在，info为 "Invalid user id" | "Invalid chat id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+
+  /api/chat:
+    post:
+      tags:
+        - chat
+      summary: 新建一个聊天
+      description: 新建一个聊天
+      operationId: createChat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - token
+                - user_id
+                - chat_name
+                - is_private
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+                user_id:
+                  type: integer
+                  description: 自己账户的id
+                  example: 1
+                chat_name:
+                  type: string
+                  description: 聊天名称
+                  example: "Athens"
+                members:
+                  type: array
+                  description: 将要邀请的成员id列表
+                  example: [ 2, 3 ]
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0
+                    example: 0
+                  info:
+                    type: string
+                    description: Success
+                    default: "Success"
+                    example: "Success"
+                  chat_id:
+                    type: integer
+                    description: 新创建的聊天id
+                    example: 1
+                  create_time:
+                    type: number
+                    format: time
+                    description: 该聊天的创建时间
+                    example: 1710836514
+        '401':
+          description: 令牌错误，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 用户id不存在，info为 "Invalid user id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '409':
+          description: 该聊天已经存在，info为"Chatname conflict"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+
+
+
+  /api/message/{messageid}:
+    get:
+      tags:
+        - message
+      summary: 获取某消息的全部信息
+      description: 获取某消息的全部信息
+      operationId: getMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - token
+                - user_id
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+                user_id:
+                  type: integer
+                  description: 自己账户的id
+                  example: 1
+      responses:
+        '200':
+          description: 成功响应，返回消息所有信息
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                    description: 0
+                  info:
+                    type: string
+                    description: Success
+                  msg_id:
+                    type: integer
+                    description: 消息id
+                    example: 1
+                  sender_id:
+                    type: integer
+                    description: 发送者id
+                    example: 1
+                  msg_text:
+                    type: string
+                    description: 消息文字
+                    example: "I published the Republic"
+                  msg_type:
+                    type: string
+                    description: 消息类型
+                    enum:
+                      - text
+                      - image
+                      - audio
+                      - video
+                      - others
+                    example: text
+                  create_time:
+                    type: number
+                    format: time
+                    description: 消息发送的时间
+                    example: 1710836514
+                  read_users:
+                    type: array
+                    description: 已读成员id列表
+                    example: [ 1,2 ]
+                  msg_file:
+                    type: string
+                    format: binary
+                    description: 文件，该字段可为空
+        '401':
+          description: 令牌错误，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 消息id或用户id不存在，info为 "Invalid user id" | "Invalid message id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+    delete:
+      tags:
+        - message
+      summary: 撤回某消息
+      description: 撤回某消息，只能在发送后5min内操作
+      operationId: deleteMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - token
+                - user_id
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+                user_id:
+                  type: integer
+                  description: 自己账户的id
+                  example: 1
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          description: 令牌错误或用户不是该消息的发送者，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 用户id或消息id不存在，info为 "Invalid user id" | "Invalid message id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '412':
+          description: 距消息发出已超过5min, info为 "Time exceed"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeExceedResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+
+
+  /api/message/{messageid}/read:
+    put:
+      tags:
+        - message
+      summary: 通知后端本人已阅读该消息
+      description: 通知后端本人已阅读该消息
+      operationId: readMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+                user_id:
+                  type: integer
+                  description: 自己账户的id
+                  example: 1
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          description: 令牌错误，info为 "Unauthorized"。或该用户不可视该消息，info为 "Cannot read"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 用户id或消息id不存在，info为 "Invalid user id" | "Invalid message id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+
+
+  /api/message:
+    post:
+      tags:
+        - message
+      summary: 发送一条消息
+      description: 发送一条消息
+      operationId: sendMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - token
+                - user_id
+                - chat_id
+                - msg_id
+                - msg_text
+                - msg_type
+              properties:
+                token:
+                  type: string
+                  description: JWT令牌
+                  example: "***.***.***"
+                user_id:
+                  type: integer
+                  description: 自己账户的id
+                  example: 1
+                chat_id:
+                  type: integer
+                  description: 聊天id
+                  example: 1
+                msg_id:
+                  type: integer
+                  description: 消息id
+                  example: 1
+                msg_text:
+                  type: string
+                  description: 消息文字
+                  example: "I published the Republic"
+                msg_type:
+                  type: string
+                  description: 消息类型
+                  enum:
+                    - text
+                    - image
+                    - audio
+                    - video
+                    - others
+                  example: "text"
+                msg_file:
+                  type: string
+                  format: binary
+                  description: 文件，该字段可为空
+                  example: "FILE BINARY"
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    description: 0
+                    example: 0
+                  info:
+                    type: string
+                    description: Success
+                    default: "Success"
+                    example: "Success"
+                  msg_id:
+                    type: integer
+                    description: 新发送的消息id
+                    example: 1
+                  create_time:
+                    type: number
+                    format: time
+                    description: 该消息的创建时间
+                    example: 1710836514
+        '401':
+          description: 令牌错误，info为 "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 用户id或聊天id不存在，info为 "Invalid user id" | "Invalid chat id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
 
 
 
@@ -579,13 +1305,14 @@ components:
           example: "Plato"
         password:
           type: string
-          description: 用户密码（前端加密后），加密后长度小于等于50
+          description: 用户密码，长度小于等于50
           example: "123456"
     JWTResponse:
       required:
         - code
         - info
         - token
+        - user_id
         - user_name
         - password
       properties:
@@ -610,10 +1337,6 @@ components:
           type: string
           description: 用户名，长度小于等于50
           example: "Plato"
-        password:
-          type: string
-          description: 用户密码（前端加密后），加密后长度小于等于50
-          example: "123456"
         user_email:
           type: string
           format: email
@@ -693,4 +1416,14 @@ components:
           type: string
           description: some message
           example: "some message"
-
+    TimeExceedResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: -6
+          example: -6
+        info:
+          type: string
+          description: some message
+          example: "some message"

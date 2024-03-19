@@ -3,8 +3,8 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="adoc"
-                 name="CoTalk API Docs"
-                 start-page="api-docs.md">
+                  name="CoTalk API Docs"
+                  start-page="api-docs.md">
 
     <toc-element topic="api-docs.md"/>
     <toc-element topic="Git-specification.md"/>
@@ -19,17 +19,31 @@
             </toc-element>
             <toc-element toc-title="Friend">
                 <toc-element topic="Get-the-user-s-friends-list.md"/>
-                <toc-element topic="Search-for-users.md"/>
                 <toc-element topic="Make-delete-a-friend.md"/>
+                <toc-element topic="Search-for-users.md"/>
             </toc-element>
             <toc-element toc-title="Chat">
                 <toc-element topic="Get-the-user-s-chat-list.md"/>
+                <toc-element topic="Exit-chat.md"/>
             </toc-element>
         </toc-element>
-
         <toc-element toc-title="Chat">
-            <toc-element topic="Invite-kick-a-member.md"/>
+            <toc-element topic="Create-a-chat.md"/>
+            <toc-element topic="Get-message-list.md"/>
+            <toc-element toc-title="Members">
+                <toc-element topic="Invite-kick-a-member.md"/>
+                <toc-element topic="Get-member-list.md"/>
+                <toc-element topic="Change-member-privilege.md"/>
+            </toc-element>
         </toc-element>
+        <toc-element toc-title="Message">
+            <toc-element topic="Get-a-message.md"/>
+            <toc-element topic="Delete-a-message.md"/>
+            <toc-element topic="Post-a-message.md"/>
+            <toc-element topic="Read-a-message.md"/>
+        </toc-element>
+
     </toc-element>
+
     <toc-element topic="Changes.md"/>
 </instance-profile>

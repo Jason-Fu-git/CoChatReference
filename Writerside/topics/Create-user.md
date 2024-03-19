@@ -27,7 +27,6 @@ You can add the sample inside the <sample> element or include it from a file usi
         "token" : "***.***.***",
         "user_id" : 1,
         "user_name" : "Plato",
-        "password" : "123456",
         "user_email" : "Plato@163.com",
         "avatar" : "{FILE BINARY}"
     }

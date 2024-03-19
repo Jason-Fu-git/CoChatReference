@@ -21,7 +21,7 @@
 ## 文档代码托管
 [https://github.com/Jason-Fu-git/CoTalkreference/](https://github.com/Jason-Fu-git/CoTalkreference/)
 
-如果大家不想翻仓库改的话，可以直接改大作业仓库里的`Api.md`，改完跟我说一声~
+如果大家不想翻仓库改的话，可以直接提`issue`，在`issue`里上载`markdown`文件，我再修改page。
 
 
 <seealso>
