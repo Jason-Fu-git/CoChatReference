@@ -1,6 +1,6 @@
 # Get the user&apos;s chat list
 
-<api-endpoint openapi-path="../cochat.yaml" endpoint="/api/user/{userid}/chats" method="GET">
+<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/{userid}/chats" method="GET">
 
 <response type="200">
 <sample>

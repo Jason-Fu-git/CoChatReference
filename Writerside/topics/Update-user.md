@@ -3,7 +3,7 @@
 <!-- Use multiple <sample> elements inside <request> to provide samples for various programming languages. 
 They will be placed in tabs.Developers can use these samples as templates when making requests to this endpoint. -->
 
-<api-endpoint openapi-path="./../cochat.yaml" endpoint="/api/user/{userid}" method="post">
+<api-endpoint openapi-path="./../cotalk.yaml" endpoint="/api/user/{userid}" method="post">
 
 <request>
 <sample>

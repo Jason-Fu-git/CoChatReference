@@ -2,7 +2,7 @@
 
 <!-- This document provides an introduction into your API. -->
 
-软工项目`CoChat`的API Reference
+软工项目`CoTalk`的API Reference
 
 ## Git specification
 
@@ -19,7 +19,7 @@
 
 
 ## 文档代码托管
-[https://github.com/Jason-Fu-git/CoChatReference/](https://github.com/Jason-Fu-git/CoChatReference/)
+[https://github.com/Jason-Fu-git/CoTalkreference/](https://github.com/Jason-Fu-git/CoTalkreference/)
 
 如果大家不想翻仓库改的话，可以直接改大作业仓库里的`Api.md`，改完跟我说一声~
 

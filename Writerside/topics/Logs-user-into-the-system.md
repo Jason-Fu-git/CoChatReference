@@ -1,6 +1,6 @@
 # Log user into the system
 
-<api-endpoint openapi-path="./../cochat.yaml" endpoint="/api/user/login" method="post">
+<api-endpoint openapi-path="./../cotalk.yaml" endpoint="/api/user/login" method="post">
 <response type="200">
 
 <sample>

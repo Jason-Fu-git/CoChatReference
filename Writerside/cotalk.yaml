@@ -1,6 +1,6 @@
 openapi: "3.0.2"
 info:
-  title: CoChat API Reference
+  title: CoTalk API Reference
   version: "1.0"
 servers:
   - url: https://api.server.test/v1

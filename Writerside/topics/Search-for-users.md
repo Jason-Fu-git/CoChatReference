@@ -1,6 +1,6 @@
 # Search for users
 
-<api-endpoint openapi-path="../cochat.yaml" endpoint="/api/user" method="GET">
+<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user" method="GET">
 
 <response type="200">
 <sample>

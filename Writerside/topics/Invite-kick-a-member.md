@@ -7,6 +7,6 @@
 > 
 {style="note"}
 
-<api-endpoint openapi-path="../cochat.yaml" endpoint="/api/chat/{chatid}/management" method="put">
+<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/chat/{chatid}/management" method="put">
 
 </api-endpoint>

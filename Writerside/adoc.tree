@@ -3,7 +3,7 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="adoc"
-                 name="CoChat API Docs"
+                 name="CoTalk API Docs"
                  start-page="api-docs.md">
 
     <toc-element topic="api-docs.md"/>
