@@ -29,6 +29,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JWTResponse'
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '404':
           description: 用户不存在，info为"User Not Found"
           content:
@@ -95,6 +101,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JWTResponse'
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '409':
           description: 该用户已经存在，info为"Username conflict"
           content:
@@ -137,6 +149,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"
           content:
@@ -204,6 +222,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"
           content:
@@ -284,6 +308,12 @@ paths:
                           format: binary
                           description: 用户头像的二进制文件
                           example: "{FILE_BINARY}"
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"
           content:
@@ -339,6 +369,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"
           content:
@@ -391,6 +427,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"
           content:
@@ -475,6 +517,12 @@ paths:
                           type: boolean
                           description: 是否为私聊
                           example: true
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"
           content:
@@ -555,6 +603,12 @@ paths:
                           format: binary
                           description: 用户头像的二进制文件
                           example: "{FILE_BINARY}"
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '405':
           description: 请求方法错误
           content:
@@ -603,6 +657,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误或没有聊天管理权限，info为 "Unauthorized"
           content:
@@ -690,6 +750,12 @@ paths:
                             - owner
                             - admin
                             - member
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"
           content:
@@ -753,6 +819,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误或没有聊天管理权限，info为 "Unauthorized"
           content:
@@ -861,6 +933,12 @@ paths:
                                 type: integer
                                 description: 用户id
                                 example: 1
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"
           content:
@@ -945,6 +1023,12 @@ paths:
                     format: time
                     description: 该聊天的创建时间
                     example: 1710836514
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"
           content:
@@ -1049,6 +1133,12 @@ paths:
                     type: string
                     format: binary
                     description: 文件，该字段可为空
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"
           content:
@@ -1102,6 +1192,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误或用户不是该消息的发送者，info为 "Unauthorized"
           content:
@@ -1125,7 +1221,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TimeExceedResponse'
+                $ref: '#/components/schemas/PreconditionFailedResponse'
         '500':
           description: 服务器内部错误
           content:
@@ -1162,6 +1258,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"。或该用户不可视该消息，info为 "Cannot read"
           content:
@@ -1268,6 +1370,12 @@ paths:
                     format: time
                     description: 该消息的创建时间
                     example: 1710836514
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
         '401':
           description: 令牌错误，info为 "Unauthorized"
           content:
@@ -1416,13 +1524,24 @@ components:
           type: string
           description: some message
           example: "some message"
-    TimeExceedResponse:
+    PreconditionFailedResponse:
       type: object
       properties:
         code:
           type: integer
           description: -6
           example: -6
+        info:
+          type: string
+          description: some message
+          example: "some message"
+    BadRequestResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: -7
+          example: -7
         info:
           type: string
           description: some message
