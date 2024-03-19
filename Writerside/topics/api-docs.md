@@ -10,7 +10,7 @@
 
 ## Database specification
 
-单击 [这里](Database-specification.md) 查看本项目数据库所包含的表格、字段及对应`model.py`提供的接口。
+单击 [这里](Database-specification.md) 查看本项目数据库所包含的表格、字段.
 
 
 ## Api reference
