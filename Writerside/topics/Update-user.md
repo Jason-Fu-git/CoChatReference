@@ -14,7 +14,6 @@ They will be placed in tabs.Developers can use these samples as templates when m
 <request>
 <sample>
     {
-        "token" : "***.***.***"
         "user_name" : "Plato",
         "password" : "123456",
         "user_email" : "Plato@163.com",
