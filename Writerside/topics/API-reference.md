@@ -38,6 +38,10 @@
 - [发送消息](Post-a-message.md)
 - [标记已读](Read-a-message.md)
 
+## Security
+
+使用`jwt token`，其`payload`为 `user_id`
+
 <!-- Use the <api-doc> element to generate the documentation for a few specific endpoints and methods with the same tag 
 or <api-endpoint> element to generate the documentation for a specific endpoint and method.
 See the subsections here for specific examples. -->
