@@ -236,6 +236,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: 用户id不存在, info为 "Invalid user id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
         '409':
           description: 该用户已经存在，info为"Username conflict"
           content:
@@ -561,7 +567,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
-  /api/user:
+  /api/user/?search_text={search_text}:
     get:
       tags:
         - user
@@ -570,7 +576,7 @@ paths:
       operationId: getUsers
       requestBody:
         content:
-          application/json:
+          Query string:
             schema:
               properties:
                 search_text:
