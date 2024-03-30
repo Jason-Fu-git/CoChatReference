@@ -42,6 +42,10 @@
             <toc-element topic="Post-a-message.md"/>
             <toc-element topic="Read-a-message.md"/>
         </toc-element>
+        <toc-element topic="Websocket.md">
+            <toc-element topic="Create-websocket-connection.md"/>
+            <toc-element topic="Friend-request.md"/>
+        </toc-element>
 
     </toc-element>
 

@@ -14,7 +14,6 @@
 | `user_email`    | `CharField`    | 邮箱     | `maxLength=100`, `blank=True`（允许为空） |
 | `user_icon`     | `ImageField`   | 头像     | `.png`文件, `blank=True`              |
 
-
 ## `Message`
 
 | 字段名           | 字段类型              | 描述                                                      | 备注                         |
@@ -38,7 +37,6 @@
 | `create_time` | `FloatField`   | 创建时间  | 时间戳            |
 | `is_private`  | `BooleanField` | 是否为私聊 |                |
 
-
 ## `Friendship`
 
 | 字段名           | 字段类型           | 描述     | 备注                                                                 |
@@ -59,3 +57,11 @@
 | `privilege`   | `CharField`    |          | 成员权限，包括群主(owner)、成员(member)、管理员(admin) 三选一                       |
 | `update_time` | `FloatField`   |          | 时间戳                                                              |
 | `is_approved` | `BooleanField` | 是否同意加入聊天 |
+
+## `Client`
+
+| 字段名            | 字段类型           | 描述                      | 备注                             |
+|----------------|----------------|-------------------------|--------------------------------|
+| `channel_name` | `CharField`    | 该channel的channel_name属性 | `max_length=1024, unique=True` |
+| `user_id`      | `IntegerField` | 该channel所属user的id       | `unique=True`                  |
+| `create_time`  | `FloatField`   | 该channel建立的时间           | `default=get_timestamp`        |
