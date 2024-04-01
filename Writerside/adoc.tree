@@ -12,6 +12,7 @@
     <toc-element topic="API-reference.md">
         <toc-element toc-title="User">
             <toc-element toc-title="Account">
+                <toc-element topic="Get-a-user-s-information.md"/>
                 <toc-element topic="Create-user.md"/>
                 <toc-element topic="Logs-user-into-the-system.md"/>
                 <toc-element topic="Delete-user.md"/>

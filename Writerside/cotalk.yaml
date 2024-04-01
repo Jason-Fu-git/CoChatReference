@@ -127,6 +127,57 @@ paths:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
   /api/user/{userid}:
+    get:
+      tags:
+        - user
+      description: 根据用户ID，获取该用户的详细信息
+      operationId: getUser
+      requestBody: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+                    description: 该用户的id
+                  user_name:
+                    type: string
+                    description: 该用户的用户名
+                  user_email:
+                    type: string
+                    description: 该用户的电子邮箱
+                  avatar:
+                    type: string
+                    format: binary
+                    description: 该用户的头像
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+        '404':
+          description: 用户id不存在, info为 "Invalid user id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
     delete:
       tags:
         - user

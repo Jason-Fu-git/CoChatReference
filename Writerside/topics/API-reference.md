@@ -12,6 +12,7 @@
 - [登录用户](Logs-user-into-the-system.md)
 - [更新用户信息](Update-user.md)
 - [删除用户](Delete-user.md)
+- [获取用户详细信息](Get-a-user-s-information.md)
 
 
 - [好友列表](Get-the-user-s-friends-list.md)
@@ -37,6 +38,10 @@
 - [撤回消息](Delete-a-message.md)
 - [发送消息](Post-a-message.md)
 - [标记已读](Read-a-message.md)
+
+## Websocket
+
+- [Websocket](Websocket.md)
 
 ## Security
 
