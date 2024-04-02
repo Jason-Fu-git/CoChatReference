@@ -5,18 +5,7 @@ You can add the sample inside the <sample> element or include it from a file usi
 
 <api-endpoint openapi-path="./../cotalk.yaml" endpoint="/api/user/register" method="post">
 
-<request>
 
-<sample>
-    {
-        "user_name" : "Plato",
-        "password" : "123456",
-        "user_email" : "Plato@163.com",
-        "avatar" : "{FILE BINARY}"
-    }
-</sample>
-
-</request>
 
 <response type="200">
 
@@ -28,6 +17,8 @@ You can add the sample inside the <sample> element or include it from a file usi
         "user_id" : 1,
         "user_name" : "Plato",
         "user_email" : "Plato@163.com",
+        "description": "A great philosopher",
+        "register_time" : 1712025307.24112,
         "avatar" : "{FILE BINARY}"
     }
 </sample>

@@ -11,6 +11,7 @@
         {
             "chat_id" : 1,
             "chat_name" : "Athens",
+            "create_time" : 1712025307.24112,
             "is_private" : true,
         },
         {...},

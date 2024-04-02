@@ -11,6 +11,8 @@
         "user_id" : 1,
         "user_name" : "Plato",
         "user_email" : "Plato@163.com",
+        "description": "A great philosopher",
+        "register_time" : 1712025307.24112,
         "avatar" : "{FILE BINARY}"
     }
 </sample>

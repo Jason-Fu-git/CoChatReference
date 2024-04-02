@@ -65,11 +65,11 @@ paths:
       tags:
         - user
       summary: 用户注册
-      description: 用户基本的注册信息，可传email/avatar，注册后自动置为登录状态
+      description: 用户基本的注册信息，可传description/email/avatar，注册后自动置为登录状态
       operationId: userRegister
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
               type: object
               required:
@@ -89,6 +89,10 @@ paths:
                   format: email
                   description: 用户邮箱，长度小于等于100
                   example: "Plato@163.com"
+                description:
+                  type: string
+                  description: 用户简介，长度小于等于100
+                  example: "A great philosopher"
                 avatar:
                   type: string
                   format: binary
@@ -150,6 +154,12 @@ paths:
                   user_email:
                     type: string
                     description: 该用户的电子邮箱
+                  description:
+                    type: string
+                    description: 该用户的描述
+                  register_time:
+                    type: number
+                    description: 注册时间
                   avatar:
                     type: string
                     format: binary
@@ -187,7 +197,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: JWT authorization token (无请求头)
+          description: JWT authorization token (无请求体)
           required: true
           example: "***.***.***"
           schema:
@@ -246,7 +256,7 @@ paths:
             type: string
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
               type: object
               properties:
@@ -263,6 +273,10 @@ paths:
                   format: email
                   description: 用户新邮箱，长度小于等于100
                   example: "Plato@163.com"
+                description:
+                  type: string
+                  description: 用户描述，长度小于等于100
+                  example: "A great philosopher"
                 avatar:
                   type: string
                   format: binary
@@ -322,7 +336,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: JWT authorization token (无请求头)
+          description: JWT authorization token (无请求体)
           required: true
           example: "***.***.***"
           schema:
@@ -362,6 +376,14 @@ paths:
                           format: email
                           description: 用户邮箱，长度小于等于100
                           example: "Plato@163.com"
+                        description:
+                          type: string
+                          description: 用户简介
+                          example: "A great philosopher"
+                        register_time:
+                          type: number
+                          description: 注册时间
+                          example: 1712025307.24112
                         avatar:
                           type: string
                           format: binary
@@ -548,7 +570,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: JWT authorization token (无请求头)
+          description: JWT authorization token (无请求体)
           required: true
           example: "***.***.***"
           schema:
@@ -583,6 +605,10 @@ paths:
                           type: string
                           description: 聊天名称
                           example: "Athens"
+                        create_time:
+                          type: number
+                          description: 创建时间
+                          example: 1712025307.24112
                         is_private:
                           type: boolean
                           description: 是否为私聊
@@ -668,6 +694,14 @@ paths:
                           format: email
                           description: 用户邮箱，长度小于等于100
                           example: "Plato@163.com"
+                        description:
+                          type: string
+                          description: 用户简介
+                          example: "A great philosopher"
+                        register_time:
+                          type: number
+                          description: 注册时间
+                          example: 1712025307.24112
                         avatar:
                           type: string
                           format: binary
@@ -816,6 +850,14 @@ paths:
                           format: email
                           description: 用户邮箱，长度小于等于100
                           example: "Plato@163.com"
+                        description:
+                          type: string
+                          description: 用户简介
+                          example: "A great philosopher"
+                        register_time:
+                          type: number
+                          description: 注册时间
+                          example: 1712025307.24112
                         avatar:
                           type: string
                           format: binary
@@ -1551,6 +1593,14 @@ components:
           format: email
           description: 用户邮箱，长度小于等于100
           example: "Plato@163.com"
+        description:
+          type: string
+          description: 用户简介
+          example: "A great philosopher"
+        register_time:
+          type: number
+          description: 注册时间
+          example: 1712025307.24112
         avatar:
           type: string
           format: binary

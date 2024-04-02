@@ -6,21 +6,11 @@
 > 
 {style="warning"}
 
+不必传入所有字段，按需传入即可。
+
 <!-- Use multiple <sample> elements inside <request> to provide samples for various programming languages. 
 They will be placed in tabs.Developers can use these samples as templates when making requests to this endpoint. -->
 
 <api-endpoint openapi-path="./../cotalk.yaml" endpoint="/api/user/{userid}" method="put">
-
-<request>
-<sample>
-    {
-        "user_name" : "Plato",
-        "password" : "123456",
-        "user_email" : "Plato@163.com",
-        "avatar" : "{FILE BINARY}"
-    }
-</sample>
-
-</request>
 
 </api-endpoint>

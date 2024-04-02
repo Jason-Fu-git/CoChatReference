@@ -4,15 +4,16 @@
 
 ## `User`
 
-| 字段名             | 字段类型           | 描述     | 备注                                  |
-|-----------------|----------------|--------|-------------------------------------|
-| `user_id`       | `BigAutoField` |        | 主键                                  |
-| `user_name`     | `CharField`    |        | `maxLength=50`, `unique=True`       |
-| `password`      | `CharField`    | 加密后的密码 | `maxLength=50`                      |
-| `register_time` | `FloatField`   |        | 时间戳                                 |
-| `login_time`    | `FloatField`   |        | 时间戳                                 |
-| `user_email`    | `CharField`    | 邮箱     | `maxLength=100`, `blank=True`（允许为空） |
-| `user_icon`     | `ImageField`   | 头像     | `.png`文件, `blank=True`              |
+| 字段名             | 字段类型           | 描述     | 备注                                                          |
+|-----------------|----------------|--------|-------------------------------------------------------------|
+| `user_id`       | `BigAutoField` |        | 主键                                                          |
+| `user_name`     | `CharField`    |        | `maxLength=50`, `unique=True`                               |
+| `password`      | `CharField`    | 加密后的密码 | `maxLength=50`                                              |
+| `register_time` | `FloatField`   |        | 时间戳                                                         |
+| `login_time`    | `FloatField`   |        | 时间戳                                                         |
+| `user_email`    | `CharField`    | 邮箱     | `maxLength=100`, `blank=True`（允许为空）                         |
+| `description`   | `CharField`    | 用户描述   | `max_length=MAX_DESCRIPTION_LENGTH, default="这个人很懒，什么都没留下"` |
+| `user_icon`     | `ImageField`   | 头像     | `.png`文件, `blank=True`                                      |
 
 ## `Message`
 
