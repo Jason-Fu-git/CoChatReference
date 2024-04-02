@@ -23,3 +23,7 @@ api reference的 [User部分](Create-user.md) 的创建、登录、更新数据�
 ## April 1, 2024
 
 新建`/api/user/<user_id>`url下对`GET`方法的处理，可通过用户ID获取用户详细信息。
+
+## April 2, 2024
+
+新建`Notification`数据库即`Notification`配套HTTP请求规范。

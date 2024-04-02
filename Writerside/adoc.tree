@@ -27,6 +27,12 @@
                 <toc-element topic="Get-the-user-s-chat-list.md"/>
                 <toc-element topic="Exit-chat.md"/>
             </toc-element>
+            <toc-element topic="Notification.md">
+                <toc-element topic="Get-notification-list.md"/>
+                <toc-element topic="Get-a-notification.md"/>
+                <toc-element topic="Delete-a-notification.md"/>
+                <toc-element topic="Mark-as-read.md"/>
+            </toc-element>
         </toc-element>
         <toc-element toc-title="Chat">
             <toc-element topic="Create-a-chat.md"/>

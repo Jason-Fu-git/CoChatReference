@@ -59,6 +59,17 @@
 | `update_time` | `FloatField`   |          | 时间戳                                                              |
 | `is_approved` | `BooleanField` | 是否同意加入聊天 |
 
+## `Notification`
+
+| 字段名               | 字段类型           | 描述     | 备注                                                                 |
+|-------------------|----------------|--------|--------------------------------------------------------------------|
+| `notification_id` | `BigAutoField` |        | `primary_key=True`                                                 |
+| `receiver`        | `ForeignKey`   | 通知接受者  | ` on_delete=models.CASCADE, related_name='receiver_notifications'` |
+| `sender`          | `ForeignKey`   | 通知发送者  | ` on_delete=models.CASCADE, related_name='sender_notifications'`   |
+| `content`         | `CharField`    | 通知具体内容 | `max_length=1000`                                                  |
+| `create_time`     | `FloatField`   |        | 时间戳                                                                |
+| `is_read`         | `BooleanField` | 是否已读   | `default=False`                                                    |
+
 ## `Client`
 
 | 字段名            | 字段类型           | 描述                      | 备注                             |

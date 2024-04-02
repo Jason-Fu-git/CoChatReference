@@ -24,6 +24,12 @@
 - [退出群聊](Exit-chat.md)
 
 
+- [获取通知列表](Get-notification-list.md)
+- [获取单个通知内容](Get-a-notification.md)
+- [删除通知](Delete-a-notification.md)
+- [通知标为已读](Mark-as-read.md)
+
+
 ## 聊天
 
 - [创建聊天](Create-a-chat.md)

@@ -11,7 +11,7 @@
 <sample>
 {
     "code" : 0,
-    "info" : Success,
+    "info" : "Success",
     "messages" : [
         {
             "msg_id" : 1,
