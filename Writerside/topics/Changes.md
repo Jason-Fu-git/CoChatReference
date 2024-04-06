@@ -27,3 +27,8 @@ api reference的 [User部分](Create-user.md) 的创建、登录、更新数据�
 ## April 2, 2024
 
 新建`Notification`数据库即`Notification`配套HTTP请求规范。
+
+
+## April 6, 2024
+
+修改了部分`Chat` 接口规范

@@ -4,4 +4,10 @@
 > 
 {style="warning"}
 
+> 如果该成员退出聊天后，聊天中一个人都没有，则该聊天自动删除。
+>
+> 群主退出后，群主权交给管理员/成员
+>
+{style='warning'}
+
 <api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/{userid}/chats" method="DELETE"></api-endpoint>

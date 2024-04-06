@@ -1092,7 +1092,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
-  /api/chat:
+  /api/chat/:
     post:
       tags:
         - chat
