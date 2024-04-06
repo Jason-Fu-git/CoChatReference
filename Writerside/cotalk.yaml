@@ -644,22 +644,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
-  /api/user/?search_text={search_text}:
+  /api/user/search/{search_text}:
     get:
       tags:
         - user
       summary: 获取用户列表
-      description: 根据搜索词获取用户列表，若搜索词为空，返回所有用户
+      description: 根据搜索词获取用户列表
       operationId: getUsers
       requestBody:
-        content:
-          Query string:
-            schema:
-              properties:
-                search_text:
-                  type: string
-                  description: 搜索文字，若为空，返回所有用户
-                  example: "Pla"
+        null
       responses:
         '200':
           description: 成功响应，返回用户列表

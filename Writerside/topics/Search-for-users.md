@@ -1,6 +1,10 @@
 # Search for users
 
-<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/?search_text={search_text}" method="GET">
+> 如欲获取所有用户，请对`/api/user/search` 调用GET方法
+>
+{style="note"}
+
+<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/search/{search_text}" method="GET">
 
 <response type="200">
 <sample>
