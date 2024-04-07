@@ -4,7 +4,7 @@
 > 
 {style="warning"}
 
-<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/message/{messageid}" method="GET">
+<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/message/{messageid}/management" method="GET">
 
 <response type="200">
 <sample>

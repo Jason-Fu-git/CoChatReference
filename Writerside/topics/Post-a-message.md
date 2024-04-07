@@ -1,6 +1,6 @@
 # Post a message
 
-<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/message" method="POST">
+<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/message/send" method="POST">
 
 <response type="200">
 
