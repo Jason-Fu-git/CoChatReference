@@ -7,5 +7,5 @@
 > 
 {style="note"}
 
-<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/{userid}/friends" method="PUT">
+<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/private/{user_id}/friends" method="PUT">
 </api-endpoint>

@@ -1,6 +1,6 @@
 # Get a user&apos;s information
 
-<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/{userid}" method="GET">
+<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/private/{user_id}" method="GET">
 
 <response type="200">
 <sample>

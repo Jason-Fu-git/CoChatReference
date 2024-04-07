@@ -130,7 +130,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
-  /api/user/{userid}:
+  /api/user/private/{user_id}:
     get:
       tags:
         - user
@@ -326,7 +326,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
-  /api/user/{userid}/friends:
+  /api/user/private/{user_id}/friends:
     get:
       tags:
         - user
@@ -488,7 +488,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
-  /api/user/{userid}/chats:
+  /api/user/private/{user_id}/chats:
     delete:
       tags:
         - user
@@ -1085,7 +1085,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
-  /api/chat/:
+  /api/chat/create:
     post:
       tags:
         - chat
@@ -1186,7 +1186,7 @@ paths:
 
 
 
-  /api/message/{messageid}:
+  /api/message/{messageid}/management:
     get:
       tags:
         - message
@@ -1424,7 +1424,7 @@ paths:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
 
-  /api/message:
+  /api/message/send:
     post:
       tags:
         - message
@@ -1539,7 +1539,7 @@ paths:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
 
-  /api/user/{user_id}/notification/{notification_id}:
+  /api/user/private/{user_id}/notification/{notification_id}:
     get:
       tags:
         - notification
@@ -1672,7 +1672,7 @@ paths:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
 
-  /api/user/{user_id}/notification/{notification_id}/read:
+  /api/user/private/{user_id}/notification/{notification_id}/read:
     put:
       tags:
         - notification
@@ -1727,7 +1727,7 @@ paths:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
 
-  /api/user/{user_id}/notification:
+  /api/user/private/{user_id}/notification:
     get:
       tags:
         - user

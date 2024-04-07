@@ -8,7 +8,7 @@
 >
 {style="note"}
 
-<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/chat/" method="post">
+<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/chat/create" method="post">
 
 <response type="200">
 

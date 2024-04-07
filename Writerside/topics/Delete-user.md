@@ -6,4 +6,4 @@
 >
 {style="warning"}
 
-<api-endpoint openapi-path="./../cotalk.yaml" endpoint="/api/user/{userid}" method="delete"/>
+<api-endpoint openapi-path="./../cotalk.yaml" endpoint="/api/user/private/{user_id}" method="delete"/>
