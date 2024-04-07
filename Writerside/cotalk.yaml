@@ -1539,7 +1539,7 @@ paths:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
 
-  /api/user/private/{user_id}/notification/{notification_id}:
+  /api/user/private/{user_id}/notification/{notification_id}/detail:
     get:
       tags:
         - notification
@@ -1727,7 +1727,7 @@ paths:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
 
-  /api/user/private/{user_id}/notification:
+  /api/user/private/{user_id}/notification/:
     get:
       tags:
         - user
@@ -1744,8 +1744,11 @@ paths:
             type: string
       requestBody:
         content:
-          application/json:
+          Query string:
             schema:
+              required:
+                - only_unread
+                - later_than
               properties:
                 only_unread:
                   type: boolean
@@ -1808,7 +1811,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '404':
-          description: 聊天id或用户id不存在，info为 "Invalid user id" | "Invalid chat id"
+          description: 用户id不存在，info为 "Invalid user id"
           content:
             application/json:
               schema:
