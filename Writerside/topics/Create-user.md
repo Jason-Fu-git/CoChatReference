@@ -1,7 +1,8 @@
 # Create user
 
-<!--Specify request and response samples manually. 
-You can add the sample inside the <sample> element or include it from a file using the 'src' attribute.-->
+> 支持的头像扩展名包括：`.png`, `.jpg`, `.jpeg`
+>
+{style="note"}
 
 <api-endpoint openapi-path="./../cotalk.yaml" endpoint="/api/user/register" method="post">
 

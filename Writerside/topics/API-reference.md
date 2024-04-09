@@ -13,6 +13,7 @@
 - [更新用户信息](Update-user.md)
 - [删除用户](Delete-user.md)
 - [获取用户详细信息](Get-a-user-s-information.md)
+- [获取用户头像](Get-a-user-s-avatar.md)
 
 
 - [好友列表](Get-the-user-s-friends-list.md)
