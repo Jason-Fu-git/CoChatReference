@@ -8,5 +8,11 @@
 
 [Friend request](Friend-request.md)
 
+## 群聊事件
+
+[Chat management](Chat-management.md)
+
+
+
 
 

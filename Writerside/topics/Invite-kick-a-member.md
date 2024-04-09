@@ -2,8 +2,13 @@
 
 > 此接口有三种调用时机
 > - A 邀请 B 加入群聊 C
-> - B 收到了 A 的邀请，不回复，此时`approve`字段起作用, `member_id`与`user_id`相等
+>   - A 向 B 发送 Notification 或 websocket， 详情参见[Chat management](Chat-management.md)
+> - B 收到了 A 的邀请，并回复，此时`approve`字段起作用, `member_id`与`user_id`相等
+>   -  在这种情况下，如果 B 同意邀请，则添加系统消息："B joined the chat." 此消息全体聊天参与者可见。
+>   - 注：不管B作何反应，不会添加任何 Notification
 > - A 把 B 踢出群聊 C，此时 `approve`必须为`false`
+>   - 添加系统消息： "A kicked B out of the chat." 此消息全体聊天参与者可见
+>   - A 向 B 发送 Notification 或 websocket， 详情参见[Chat management](Chat-management.md)
 >
 {style="note"}
 

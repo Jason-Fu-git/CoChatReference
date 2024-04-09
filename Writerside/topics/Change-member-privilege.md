@@ -10,6 +10,7 @@
 >
 {style="note"}
 
+成员权限修改后，添加系统消息 "A changed B's privilege to admin" (例)，并利用Notification或Websocket通知对方。
 
 <api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/chat/{chatid}/management" method="PUT">
 

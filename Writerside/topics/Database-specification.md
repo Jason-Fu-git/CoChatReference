@@ -57,7 +57,8 @@
 | `chat`        | `ForeignKey`   |          | `on_delete=models.CASCADE`<br />`related_name='user_membership'` |
 | `privilege`   | `CharField`    |          | 成员权限，包括群主(owner)、成员(member)、管理员(admin) 三选一                       |
 | `update_time` | `FloatField`   |          | 时间戳                                                              |
-| `is_approved` | `BooleanField` | 是否同意加入聊天 |
+| `is_approved` | `BooleanField` | 是否同意加入聊天 | 默认False                                                          |
+| `is_system`   | `BooleanField` | 是否为系统通知  | 默认False                                                          |                                                          
 
 ## `Notification`
 

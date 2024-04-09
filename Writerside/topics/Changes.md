@@ -46,3 +46,5 @@ GET 方法 API 规范更改
 - [通知列表获取](Get-notification-list.md)
 - [消息列表获取](Get-message-list.md)
 - [聊天成员获取](Get-message-list.md)
+
+Chat 部分 Websocket 和 Notification 规范

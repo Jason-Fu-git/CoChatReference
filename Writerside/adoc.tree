@@ -53,6 +53,7 @@
         <toc-element topic="Websocket.md">
             <toc-element topic="Create-websocket-connection.md"/>
             <toc-element topic="Friend-request.md"/>
+            <toc-element topic="Chat-management.md"/>
         </toc-element>
 
     </toc-element>
