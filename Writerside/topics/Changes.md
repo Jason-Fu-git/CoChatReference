@@ -39,3 +39,10 @@ api reference的 [User部分](Create-user.md) 的创建、登录、更新数据�
 
 - 用户注册/信息更新的请求体格式改为`multipart/form-data`
 - 获取头像参见[这里](Get-a-user-s-avatar.md)
+
+GET 方法 API 规范更改
+
+- [搜索用户](Search-for-users.md)
+- [通知列表获取](Get-notification-list.md)
+- [消息列表获取](Get-message-list.md)
+- [聊天成员获取](Get-message-list.md)

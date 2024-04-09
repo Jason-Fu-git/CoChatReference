@@ -134,7 +134,7 @@ paths:
     get:
       tags:
         - user
-      description: 根据用户ID，获取该用户的详细信息
+      description: 根据用户ID，获取该用户的详细信息 (头像除外)
       operationId: getUser
       requestBody: null
       responses:
@@ -160,10 +160,6 @@ paths:
                   register_time:
                     type: number
                     description: 注册时间
-                  avatar:
-                    type: string
-                    format: binary
-                    description: 该用户的头像
         '400':
           description: 请求体格式错误
           content:
@@ -384,11 +380,6 @@ paths:
                           type: number
                           description: 注册时间
                           example: 1712025307.24112
-                        avatar:
-                          type: string
-                          format: binary
-                          description: 用户头像的二进制文件
-                          example: "{FILE_BINARY}"
         '400':
           description: 请求体格式错误
           content:
@@ -644,7 +635,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
-  /api/user/search/{search_text}:
+  /api/user/search:
     get:
       tags:
         - user
@@ -652,7 +643,13 @@ paths:
       description: 根据搜索词获取用户列表
       operationId: getUsers
       requestBody:
-        null
+        content:
+          Query string:
+            schema:
+              properties:
+                search_text:
+                  type: string
+                  description: 搜索词
       responses:
         '200':
           description: 成功响应，返回用户列表
@@ -695,11 +692,6 @@ paths:
                           type: number
                           description: 注册时间
                           example: 1712025307.24112
-                        avatar:
-                          type: string
-                          format: binary
-                          description: 用户头像的二进制文件
-                          example: "{FILE_BINARY}"
         '400':
           description: 请求体格式错误
           content:
@@ -804,7 +796,7 @@ paths:
             type: string
       requestBody:
         content:
-          application/json:
+          Query String:
             schema:
               properties:
                 user_id:
@@ -851,11 +843,6 @@ paths:
                           type: number
                           description: 注册时间
                           example: 1712025307.24112
-                        avatar:
-                          type: string
-                          format: binary
-                          description: 用户头像的二进制文件
-                          example: "{FILE_BINARY}"
                         privilege:
                           type: string
                           description: 用户权限
@@ -972,7 +959,7 @@ paths:
       tags:
         - chat
       summary: 获取（晚于某时间）的聊天消息列表
-      description: 获取聊天消息列表，及其已读/未读信息
+      description: 获取聊天消息列表，及其已读/未读信息，若`later_than`字段不存在，返回所有该聊天内的消息
       operationId: getChatMessages
       parameters:
         - name: Authorization
@@ -984,11 +971,10 @@ paths:
             type: string
       requestBody:
         content:
-          application/json:
+          Query string:
             schema:
               required:
                 - user_id
-                - later_than
               properties:
                 user_id:
                   type: integer
@@ -1767,13 +1753,13 @@ paths:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
 
-  /api/user/private/{user_id}/notification/:
+  /api/user/private/{user_id}/notifications:
     get:
       tags:
         - user
-      summary: 获取用户列表
-      description: 根据搜索词获取用户列表，若搜索词为空，返回所有用户
-      operationId: getUsers
+      summary: 获取通知列表
+      description: 根据目标字段获取通知列表，若对应字段不存在（如果存在，不能为空！），返回所有通知
+      operationId: getNotifications
       parameters:
         - name: Authorization
           in: header
@@ -1925,11 +1911,6 @@ components:
           type: number
           description: 注册时间
           example: 1712025307.24112
-        avatar:
-          type: string
-          format: binary
-          description: 用户头像的二进制文件
-          example: "{FILE_BINARY}"
     SuccessResponse:
       type: object
       properties:

@@ -1,10 +1,12 @@
 # Search for users
 
-> 如欲获取所有用户，请对`/api/user/search` 调用GET方法
+> 当搜索词为空时，返回所有用户
+> 
+> 否则，从用户名、用户邮箱、用户描述中寻找匹配项
 >
 {style="note"}
 
-<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/search/{search_text}" method="GET">
+<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/search" method="GET">
 
 <response type="200">
 <sample>

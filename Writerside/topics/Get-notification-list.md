@@ -1,11 +1,11 @@
 # Get notification list
 
 > url 示例
->  `/api/user/private/{user_id}/notification/?only_unread={bool}&later_than={number}`
+>  `/api/user/private/{user_id}/notifications?only_unread={bool}&later_than={number}`
 > 
 {style="note"}
 
-<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/private/{user_id}/notification/" method="GET">
+<api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/private/{user_id}/notifications" method="GET">
 
 <response type="200">
 
