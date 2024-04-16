@@ -37,6 +37,7 @@
         </toc-element>
         <toc-element toc-title="Chat">
             <toc-element topic="Create-a-chat.md"/>
+            <toc-element topic="Get-chat-detail.md"/>
             <toc-element topic="Get-message-list.md"/>
             <toc-element toc-title="Members">
                 <toc-element topic="Invite-kick-a-member.md"/>

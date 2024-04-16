@@ -881,6 +881,65 @@ paths:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
+  /api/chat/{chatid}/detail:
+    get:
+      tags:
+        - chat
+      summary: 获取聊天详细信息
+      description: 获取聊天的详细信息
+      requestBody: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                properties:
+                  chat_id:
+                    type: integer
+                    description: 聊天id
+                  chat_name:
+                    type: string
+                    description: 聊天名
+                  owner_id:
+                    type: integer
+                    description: 群主id
+                  member_num:
+                    type: integer
+                    description: 群成员数量
+                  create_time:
+                    type: number
+                    format: timestamp
+                    description: 创建时间
+                  is_private:
+                    type: boolean
+                    description: 是否为私聊
+        '400':
+          description: 请求体格式错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+        '404':
+          description: 聊天id不存在，info为 "Invalid chat id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '405':
+          description: 请求方法错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadMethodResponse'
+        '500':
+          description: 服务器内部错误
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerErrorResponse'
+
+
   /api/chat/{chatid}/management:
     put:
       tags:
@@ -1525,7 +1584,7 @@ paths:
                 $ref: '#/components/schemas/ServerErrorResponse'
 
 
-  /api/user/private/{user_id}/notification/{notification_id}/detail:
+  /api/user/private/{user_id}/notification/{notification_id}:
     get:
       tags:
         - notification
@@ -1656,9 +1715,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
-
-
-  /api/user/private/{user_id}/notification/{notification_id}/read:
     put:
       tags:
         - notification
