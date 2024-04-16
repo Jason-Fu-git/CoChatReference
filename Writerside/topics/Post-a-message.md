@@ -1,5 +1,9 @@
 # Post a message
 
+> 注意：即使传的是文件，也必须有`msg_text`字段！
+> 
+{style="warning"}
+
 <api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/message/send" method="POST">
 
 <response type="200">

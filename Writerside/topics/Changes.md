@@ -53,3 +53,4 @@ Chat 部分 Websocket 和 Notification 规范
 
 - 将通知的各项操作整合到url `/api/user/private/{user_id}/notification/{notification_id}`
 - 新建获取[chat detail](Get-chat-detail.md)的接口
+- 修改Message相关接口

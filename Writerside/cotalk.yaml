@@ -1067,6 +1067,10 @@ paths:
                           type: integer
                           description: 消息id
                           example: 1
+                        chat_id:
+                          type: integer
+                          description: 消息所在聊天的id
+                          example: 1
                         sender_id:
                           type: integer
                           description: 发送者id
@@ -1090,15 +1094,24 @@ paths:
                           format: time
                           description: 消息发送的时间
                           example: 1710836514
+                        update_time:
+                          type: number
+                          format: timestamp
+                          description: 该消息状态更新的时间
                         read_users:
                           type: array
                           description: 已读成员id列表
-                          items:
-                            properties:
-                              user_id:
-                                type: integer
-                                description: 用户id
-                                example: 1
+                          example: [ 1,2 ]
+                        reply_to:
+                          type: integer
+                          description: 回复的消息id，若没有指定，默认为-1
+                        is_system:
+                          type: boolean
+                          description: 是否为系统消息
+                        msg_file_url:
+                          type: string
+                          format: url
+                          description: 如果有文件，返回该文件的url，可通过get方法获取；否则，该字段为空。
         '400':
           description: 请求体格式错误
           content:
@@ -1248,7 +1261,7 @@ paths:
             type: string
       requestBody:
         content:
-          application/json:
+          Query string:
             schema:
               required:
                 - user_id
@@ -1274,6 +1287,10 @@ paths:
                     type: integer
                     description: 消息id
                     example: 1
+                  chat_id:
+                    type: integer
+                    description: 消息所在聊天的id
+                    example: 1
                   sender_id:
                     type: integer
                     description: 发送者id
@@ -1297,14 +1314,28 @@ paths:
                     format: time
                     description: 消息发送的时间
                     example: 1710836514
+                  update_time:
+                    type: number
+                    format: timestamp
+                    description: 该消息状态更新的时间
                   read_users:
                     type: array
                     description: 已读成员id列表
                     example: [ 1,2 ]
-                  msg_file:
+                  unable_to_see_users:
+                    type: array
+                    description: 不可视该消息的成员id列表
+                    example: [ 1,2 ]
+                  reply_to:
+                    type: integer
+                    description: 回复的消息id，若没有指定，默认为-1
+                  is_system:
+                    type: boolean
+                    description: 是否为系统消息
+                  msg_file_url:
                     type: string
-                    format: binary
-                    description: 文件，该字段可为空
+                    format: url
+                    description: 如果有文件，返回该文件的url，可通过get方法获取；否则，该字段为空。
         '400':
           description: 请求体格式错误
           content:
@@ -1312,7 +1343,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
         '401':
-          description: 令牌错误，info为 "Unauthorized"
+          description: 令牌错误，info为 "Unauthorized" 或 用户不可视该消息
           content:
             application/json:
               schema:
@@ -1355,11 +1386,16 @@ paths:
             schema:
               required:
                 - user_id
+                - is_remove
               properties:
                 user_id:
                   type: integer
                   description: 自己账户的id
                   example: 1
+                is_remove:
+                  type: boolean
+                  description: 是否撤回该消息。如果为否，则为“删除该消息”
+                  example: false
       responses:
         '200':
           description: 成功
@@ -1374,7 +1410,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
         '401':
-          description: 令牌错误或用户不是该消息的发送者，info为 "Unauthorized"
+          description: 如果为撤回，令牌错误或用户不是该消息的发送者，info为 "Unauthorized"
           content:
             application/json:
               schema:
@@ -1392,7 +1428,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/BadMethodResponse'
         '412':
-          description: 距消息发出已超过5min, info为 "Time exceed"
+          description: 如果为撤回，距消息发出已超过5min, info为 "Time exceed"
           content:
             application/json:
               schema:
@@ -1403,9 +1439,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServerErrorResponse'
-
-
-  /api/message/{messageid}/read:
     put:
       tags:
         - message
@@ -1444,7 +1477,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
         '401':
-          description: 令牌错误，info为 "Unauthorized"。或该用户不可视该消息，info为 "Cannot read"
+          description: 令牌错误，info为 "Unauthorized"。或该用户不可视该消息。
           content:
             application/json:
               schema:
@@ -1486,12 +1519,11 @@ paths:
             type: string
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               required:
                 - user_id
                 - chat_id
-                - msg_id
                 - msg_text
                 - msg_type
               properties:
@@ -1502,10 +1534,6 @@ paths:
                 chat_id:
                   type: integer
                   description: 聊天id
-                  example: 1
-                msg_id:
-                  type: integer
-                  description: 消息id
                   example: 1
                 msg_text:
                   type: string
@@ -1521,10 +1549,14 @@ paths:
                     - video
                     - others
                   example: "text"
+                reply_to:
+                  type: integer
+                  description: 回复某个消息，如果没有目标消息，请不要传这个字段
+                  example: 90
                 msg_file:
                   type: string
                   format: binary
-                  description: 文件，该字段可为空
+                  description: 文件，使用Multipart/form-data的文件字段传输
                   example: "FILE BINARY"
       responses:
         '200':

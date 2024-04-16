@@ -17,17 +17,20 @@
 
 ## `Message`
 
-| 字段名           | 字段类型              | 描述                                                      | 备注                         |
-|---------------|-------------------|---------------------------------------------------------|----------------------------|
-| `msg_id`      | `BigAutoField`    |                                                         | 主键                         |
-| `sender`      | `ForeignKey`      | 消息发送者                                                   | `on_delete=models.CASCADE` |
-| `chat`        | `ForeignKey`      | 消息所属聊天                                                  | `on_delete=models.CASCADE` |
-| `msg_text`    | `CharField`       | `message_type`  = “text” 时，为消息文字；其余情况，为文件名（文件未加载成功时显示）。 | `maxLength=1000`           |
-| `msg_file`    | `FileField`       | 文件（可为空）                                                 | `blank=True`               |
-| `msg_type`    | `CharField`       | “text” \| “image” \| “audio” \| “video” \| “others”     | `maxLength=10`             |
-| `create_time` | `FloatField`      |                                                         | 时间戳                        |
-| `update_time` | `FloatField`      | 该消息的已读/未读列表更新时间                                         | 时间戳                        |
-| `read_users`  | `ManyToManyField` | 已读该消息的用户列表                                              |                            |
+| 字段名                   | 字段类型              | 描述                                                      | 备注                         |
+|-----------------------|-------------------|---------------------------------------------------------|----------------------------|
+| `msg_id`              | `BigAutoField`    |                                                         | 主键                         |
+| `sender`              | `ForeignKey`      | 消息发送者                                                   | `on_delete=models.CASCADE` |
+| `chat`                | `ForeignKey`      | 消息所属聊天                                                  | `on_delete=models.CASCADE` |
+| `msg_text`            | `CharField`       | `message_type`  = “text” 时，为消息文字；其余情况，为文件名（文件未加载成功时显示）。 | `maxLength=1000`           |
+| `msg_file`            | `FileField`       | 文件（可为空）                                                 | `blank=True`               |
+| `msg_type`            | `CharField`       | “text” \| “image” \| “audio” \| “video” \| “others”     | `maxLength=10`             |
+| `create_time`         | `FloatField`      |                                                         | 时间戳                        |
+| `update_time`         | `FloatField`      | 该消息的已读/未读列表更新时间                                         | 时间戳                        |
+| `read_users`          | `ManyToManyField` | 已读该消息的用户列表                                              |                            |
+| `unable_to_see_users` | `ManyToManyField` | 不可视该消息的用户列表                                             |                            |
+| `reply_to`            | `IntegerField`    | 回复某消息（id）                                               | default=-1                 |
+| `is_system`           | `BooleanField`    | 是否为系统消息                                                 | default=False              |
 
 ## `Chat`
 
