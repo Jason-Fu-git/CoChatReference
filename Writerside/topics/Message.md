@@ -6,6 +6,10 @@
 
 ### 内容
 
+> 撤回消息后，该消息即被销毁，`msg_id` 随即无效！
+> 
+{style="warning"}
+
 <tabs>
 <tab title="发送消息">
 <deflist collapsible="false">
@@ -47,6 +51,7 @@
 }
 </code-block>
 </tab>
+
 <tab title="撤回消息">
 <deflist collapsible="false">
     <def title="type">
