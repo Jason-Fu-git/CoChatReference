@@ -1,4 +1,4 @@
-    # Chat management
+# Chat management
 
 聊天管理
 
@@ -30,6 +30,10 @@
         <emphasis>required</emphasis>  integer
         <p>对方的user_id</p>
     </def>
+    <def title="chat_id">
+        <emphasis>required</emphasis>  integer
+        <p>所属群聊id</p>
+    </def>
     <def title="is_approved">
         <emphasis>required</emphasis>  boolean | string
         <p>是否同意请求</p>
@@ -42,6 +46,7 @@
      'type': 'chat.management',
      'status': 'change to admin',
      'user_id': 1,
+     'chat_id': 1,
      'is_approved': True,
 }
 </code-block>

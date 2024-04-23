@@ -12,6 +12,10 @@
 
 [Chat management](Chat-management.md)
 
+## 消息
+
+[Message](Message.md)
+
 
 
 

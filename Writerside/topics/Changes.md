@@ -28,7 +28,6 @@ api reference的 [User部分](Create-user.md) 的创建、登录、更新数据�
 
 新建`Notification`数据库即`Notification`配套HTTP请求规范。
 
-
 ## April 6, 2024
 
 修改了部分`Chat` 接口规范
@@ -54,3 +53,7 @@ Chat 部分 Websocket 和 Notification 规范
 - 将通知的各项操作整合到url `/api/user/private/{user_id}/notification/{notification_id}`
 - 新建获取[chat detail](Get-chat-detail.md)的接口
 - 修改Message相关接口
+
+## April 23, 2024
+
+- 新建 Websocket 接口 [Message](Message.md)
