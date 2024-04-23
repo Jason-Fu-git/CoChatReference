@@ -57,3 +57,6 @@ Chat 部分 Websocket 和 Notification 规范
 ## April 23, 2024
 
 - 新建 Websocket 接口 [Message](Message.md)
+- 新增好友分组功能，参见
+    - [Get the user's friend list](Get-the-user-s-friends-list.md)
+    - [Make / Delete a friend](Make-delete-a-friend.md)

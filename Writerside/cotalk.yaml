@@ -380,6 +380,10 @@ paths:
                           type: number
                           description: 注册时间
                           example: 1712025307.24112
+                        group:
+                          type: string
+                          description: 好友分组名称，长度小于50，默认为`ungrouped`
+                          example: "ungrouped"
         '400':
           description: 请求体格式错误
           content:
@@ -441,6 +445,10 @@ paths:
                   type: boolean
                   description: 是否同意申请
                   example: true
+                group:
+                  type: string
+                  description: 好友分组
+                  example: ungrouped
       responses:
         '200':
           description: 成功

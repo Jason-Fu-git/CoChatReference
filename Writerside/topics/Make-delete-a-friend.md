@@ -7,5 +7,14 @@
 > 
 {style="note"}
 
+> `group` 字段若为空，则默认置为 `ungrouped`. 该字段可在
+> 1. 发送好友申请
+> 2. 接受好友申请
+> 3. 已经建立好友关系，更改好友分组
+> 
+> 时添加。
+> 
+{style="note"}
+
 <api-endpoint openapi-path="../cotalk.yaml" endpoint="/api/user/private/{user_id}/friends" method="PUT">
 </api-endpoint>

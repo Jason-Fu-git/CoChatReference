@@ -48,6 +48,7 @@
 | `user`        | `ForeignKey`   |        | `on_delete=models.CASCADE`<br />`related_name='user_friendship'`   |
 | `friend`      | `ForeignKey`   |        | `on_delete=models.CASCADE`<br />`related_name='friend_friendship'` |
 | `update_time` | `FloatField`   |        | 时间戳                                                                |
+| `group`       | `CharField`    | 好友分组名称 | `maxLength=50`<br />`default='ungrouped'`                          |
 | `is_approved` | `BooleanField` | 是否同意请求 | 只有在双方都同意时，该字段才为true                                                |
 
 注：每一个好友关系对应数据库中两条数据，即（A, B）,(B, A)
