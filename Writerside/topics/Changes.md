@@ -60,3 +60,7 @@ Chat 部分 Websocket 和 Notification 规范
 - 新增好友分组功能，参见
     - [Get the user's friend list](Get-the-user-s-friends-list.md)
     - [Make / Delete a friend](Make-delete-a-friend.md)
+
+## May 2, 2024
+
+- 新增[聊天历史记录搜索](Get-message-list.md)功能

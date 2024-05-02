@@ -1047,11 +1047,18 @@ paths:
                   type: integer
                   description: 自己账户的id
                   example: 1
-                later_than:
+                filter_text:
+                  type: string
+                  description: 过滤含指定搜索文本的所有消息（区分大小写）
+                filter_user:
+                  type: integer
+                  description: 过滤对应用户所发的所有消息
+                filter_before:
                   type: number
-                  format: timestamp
-                  description: 获取晚于该时间的消息列表，默认请置为0
-                  example: 1710836514
+                  description: 过滤该时段之前的所有消息
+                filter_after:
+                  type: number
+                  description: 过滤该时段之后的所有消息
       responses:
         '200':
           description: 成功响应，返回消息列表
