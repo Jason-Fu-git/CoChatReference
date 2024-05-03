@@ -4,6 +4,10 @@
 > 
 {style="note"}
 
+> tip : 增加`filter_type=group_notice`选项，可过滤群公告
+> 
+{style="note"}
+
 > **关于历史记录搜索** 
 >
 > Query string 可以任意组合、任意顺序添加过滤器字段，返回所有过滤器过滤结果的交集
@@ -12,7 +16,7 @@
 >   - url : `/api/chat/{chatid}/messages?user_id={userid}`
 >   - 返回该聊天中的所有消息
 > - 样例2
->   - url : `/api/chat/{chatid}/messages?user_id={userid}&filter_user=2&filter_text='tsinghua'`
+>   - url : `/api/chat/{chatid}/messages?user_id={userid}&filter_user=2&filter_text=tsinghua`
 >   - 返回该聊天中`user_id=2`的成员所发消息中包含'tsinghua'(大小写敏感)的所有消息
 > - 样例3
 >   - url : `/api/chat/{chatid}/messages?user_id={userid}&filter_before=3000&filter_after=1000`
@@ -36,7 +40,7 @@
             "sender_id" : 1,
             "chat_id" : 1,
             "msg_text" : "I published the Republic",
-            "msg_type" : "text",
+            "msg_type" : "T",
             "create_time" : 1710836514,
             "update_time" : 2308102839,
             "read_users" : [

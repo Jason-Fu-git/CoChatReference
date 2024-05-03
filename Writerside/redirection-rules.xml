@@ -39,4 +39,12 @@
         <description>Created after removal of "Find user" from CoChat API Docs</description>
         <accepts>Get-user-by-user-name.html</accepts>
     </rule>
+    <rule id="79c50e5b">
+        <description>Created after removal of "Delete group notice" from CoTalk API Docs</description>
+        <accepts>Delete-group-notice.html</accepts>
+    </rule>
+    <rule id="6819ca96">
+        <description>Created after removal of "Post group notice" from CoTalk API Docs</description>
+        <accepts>Post-group-notice.html</accepts>
+    </rule>
 </rules>

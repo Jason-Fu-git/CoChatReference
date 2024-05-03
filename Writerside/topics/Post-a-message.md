@@ -4,7 +4,7 @@
 > 
 {style="warning"}
 
-> 通过`websocket`通知聊天中的所有用户
+> 消息类型为'group_notice'时，发送群公告。仅群主、群管理员可发送
 > 
 {style="note"}
 

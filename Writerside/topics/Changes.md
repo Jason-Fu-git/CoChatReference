@@ -64,3 +64,9 @@ Chat 部分 Websocket 和 Notification 规范
 ## May 2, 2024
 
 - 新增[聊天历史记录搜索](Get-message-list.md)功能
+
+## May 3, 2024
+
+- 新增群公告功能，修改以下原有接口
+  - [发送消息](Post-a-message.md)
+  - [获取历史消息](Get-message-list.md)

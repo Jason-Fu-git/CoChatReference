@@ -1025,8 +1025,8 @@ paths:
     get:
       tags:
         - chat
-      summary: 获取（晚于某时间）的聊天消息列表
-      description: 获取聊天消息列表，及其已读/未读信息，若`later_than`字段不存在，返回所有该聊天内的消息
+      summary: 获取聊天消息列表
+      description: 获取聊天消息列表，及其已读/未读信息。
       operationId: getChatMessages
       parameters:
         - name: Authorization
@@ -1059,6 +1059,17 @@ paths:
                 filter_after:
                   type: number
                   description: 过滤该时段之后的所有消息
+                filter_type:
+                  type: string
+                  description: 过滤对应类型的消息
+                  enum:
+                    - text
+                    - group_notice
+                    - image
+                    - video
+                    - audio
+                    - others
+
       responses:
         '200':
           description: 成功响应，返回消息列表
@@ -1098,12 +1109,13 @@ paths:
                           type: string
                           description: 消息类型
                           enum:
-                            - text
-                            - image
-                            - audio
-                            - video
-                            - others
-                          example: text
+                            - T(text)
+                            - I(image)
+                            - A(audio)
+                            - V(video)
+                            - G(group notice)
+                            - O(others)
+                          example: T
                         create_time:
                           type: number
                           format: time
@@ -1559,6 +1571,7 @@ paths:
                   description: 消息类型
                   enum:
                     - text
+                    - group_notice
                     - image
                     - audio
                     - video
