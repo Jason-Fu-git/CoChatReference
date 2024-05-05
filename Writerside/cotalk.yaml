@@ -855,9 +855,9 @@ paths:
                           type: string
                           description: 用户权限
                           enum:
-                            - owner
-                            - admin
-                            - member
+                            - O(owner)
+                            - A(admin)
+                            - M(member)
         '400':
           description: 请求体格式错误
           content:
@@ -1330,11 +1330,11 @@ paths:
                     type: string
                     description: 消息类型
                     enum:
-                      - text
-                      - image
-                      - audio
-                      - video
-                      - others
+                      - T(text)
+                      - I(image)
+                      - A(audio)
+                      - V(video)
+                      - O(others)
                     example: text
                   create_time:
                     type: number

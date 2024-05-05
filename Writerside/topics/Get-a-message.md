@@ -15,7 +15,7 @@
     "sender_id" : 1,
     "chat_id" : 1,
     "msg_text" : "I published the Republic",
-    "msg_type" : "text",
+    "msg_type" : "T",
     "create_time" : 1710836514,
     "update_time" : 2308102839,
     "read_users" : [

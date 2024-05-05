@@ -16,7 +16,7 @@
             "description" : "A great philosopher",
             "register_time" : 1712025307.24112,
             "avatar" : "{FILE BINARY}",
-            "privilege" : "member",
+            "privilege" : "M",
         },
         {...},
         ...
