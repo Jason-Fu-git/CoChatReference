@@ -1,13 +1,13 @@
 # Update user
 
-> Security Warning
-> 
-> 修改密码的时候不安全，后续开发时添加密码验证或2FA
-> 
-{style="warning"}
-
 > 支持的头像扩展名包括：`.png`, `.jpg`, `.jpeg`
 >
+{style="note"}
+
+> 修改密码时需要2FA，请求体必填`password`和`code`两个字段。
+> 
+> 修改用户其他信息时，不需要验证。
+> 
 {style="note"}
 
 不必传入所有字段，按需传入即可。

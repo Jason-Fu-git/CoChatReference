@@ -70,3 +70,9 @@ Chat 部分 Websocket 和 Notification 规范
 - 新增群公告功能，修改以下原有接口
   - [发送消息](Post-a-message.md)
   - [获取历史消息](Get-message-list.md)
+
+## May 7. 2024
+
+- 新增验证码功能
+  - [发送验证码](Send-verification-code.md)
+  - [更新用户信息](Update-user.md)
