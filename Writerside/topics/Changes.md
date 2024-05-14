@@ -79,4 +79,5 @@ Chat 部分 Websocket 和 Notification 规范
 
 ## May 14, 2024
 
-更新数据库设计文档。
+- 更新数据库设计文档。
+- 新增字段`user_phone`

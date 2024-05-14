@@ -89,6 +89,11 @@ paths:
                   format: email
                   description: 用户邮箱，长度小于等于100
                   example: "Plato@163.com"
+                user_phone:
+                  type: string
+                  format: phone number
+                  description: 用户电话，长度小于等于100
+                  example: "2132142312"
                 description:
                   type: string
                   description: 用户简介，长度小于等于100
@@ -154,6 +159,9 @@ paths:
                   user_email:
                     type: string
                     description: 该用户的电子邮箱
+                  user_phone:
+                    type: string
+                    description: 用户电话
                   description:
                     type: string
                     description: 该用户的描述
@@ -273,6 +281,11 @@ paths:
                   format: email
                   description: 用户新邮箱，长度小于等于100
                   example: "Plato@163.com"
+                user_phone:
+                  type: string
+                  format: phone number
+                  description: 用户新电话，长度小于等于100
+                  example: "2132142312"
                 description:
                   type: string
                   description: 用户描述，长度小于等于100
@@ -422,6 +435,11 @@ paths:
                           format: email
                           description: 用户邮箱，长度小于等于100
                           example: "Plato@163.com"
+                        user_phone:
+                          type: string
+                          format: phone number
+                          description: 用户电话，长度小于等于100
+                          example: "2132142312"
                         description:
                           type: string
                           description: 用户简介
@@ -742,6 +760,11 @@ paths:
                           format: email
                           description: 用户邮箱，长度小于等于100
                           example: "Plato@163.com"
+                        user_phone:
+                          type: string
+                          format: phone number
+                          description: 用户电话，长度小于等于100
+                          example: "2132142312"
                         description:
                           type: string
                           description: 用户简介
@@ -893,6 +916,11 @@ paths:
                           format: email
                           description: 用户邮箱，长度小于等于100
                           example: "Plato@163.com"
+                        user_phone:
+                          type: string
+                          format: phone number
+                          description: 用户电话，长度小于等于100
+                          example: "2132142312"
                         description:
                           type: string
                           description: 用户简介
@@ -2069,6 +2097,11 @@ components:
           format: email
           description: 用户邮箱，长度小于等于100
           example: "Plato@163.com"
+        user_phone:
+          type: string
+          format: phone number
+          description: 用户电话，长度小于等于100
+          example: "2132142312"
         description:
           type: string
           description: 用户简介

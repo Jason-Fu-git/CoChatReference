@@ -15,6 +15,7 @@
 | `login_time`        | `FloatField`   | 用户登录时间   | 时间戳                                                         |
 | `modify_time`       | `FloatField`   | 用户信息修改时间 | 时间戳                                                         |
 | `user_email`        | `CharField`    | 邮箱       | `maxLength=100`, `blank=True`（允许为空）                         |
+| `user_phone`        | `CharField`    | 电话       | `maxLength=100`, `blank=True`（允许为空）                         |
 | `jwt_token_salt`    | `BinaryField`  | JWT令牌的盐  | 每个用户，每次登录都会创建新的盐                                            |
 | `verification_code` | `CharField`    | 六位验证码    | 修改密码时后端随机生成                                                 |
 
