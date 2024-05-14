@@ -81,3 +81,4 @@ Chat 部分 Websocket 和 Notification 规范
 
 - 更新数据库设计文档。
 - 新增字段`user_phone`
+- 修改[用户信息更新规则](Update-user.md)

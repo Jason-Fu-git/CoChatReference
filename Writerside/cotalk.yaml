@@ -264,6 +264,10 @@ paths:
             schema:
               type: object
               properties:
+                old_password:
+                  type: string
+                  description: 用户原密码
+                  example: "qwerty"
                 user_name:
                   type: string
                   description: 新的用户名，长度小于等于50
