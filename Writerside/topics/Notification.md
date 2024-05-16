@@ -29,6 +29,9 @@
         </li>
         </list>
     </def>
+    <def title="text">
+        <p>通知显示内容</p>
+    </def>
     <def title="user_id">
         <emphasis>required</emphasis>  integer
         <p>对方的user_id</p>
@@ -71,6 +74,9 @@
         </li>
         </list>
     </def>
+    <def title="text">
+        <p>通知显示内容</p>
+    </def>  
     <def title="user_id">
         <emphasis>required</emphasis>  integer
         <p>对方的user_id</p>

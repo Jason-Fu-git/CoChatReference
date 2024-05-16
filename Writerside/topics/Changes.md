@@ -82,3 +82,7 @@ Chat 部分 Websocket 和 Notification 规范
 - 更新数据库设计文档。
 - 新增字段`user_phone`
 - 修改[用户信息更新规则](Update-user.md)
+
+## May 16, 2024
+
+- `notification`的“已读”用法改为[“同意”用法](Mark-as-read.md)。
